@@ -1,0 +1,289 @@
+what is acl's and defind ?
+A. it is noting but access control list it provides additional and flexible permissions to the file system and files and directories, it also allocate the permissions to the named users and named groups and it also provides the permissions based on users uid and guid.
+
+Give the stanja for acl's applied for the filesystem in fstab ?
+A. /path/to/filesystem     /mountpoint  fstype    defaults,alc    0    0
+
+What is the command to mount the filesystem that are acls applied
+A. mount -o remount,alc /mountpoint
+
+How will you know eigther ACL'S applied or not ?
+A. By executing "ls -l" command then if the + symbol is presented at the end of the 10th character of permissions, the acl's are applied to the file or a directory
+
+How will you add ACLS to the given file or directory and defaults acls ?
+A. setfacl -m u:username:rwx filename/dir
+   setfacl -d -m u: username:rwx filename/dir
+    (note -d indicates default permissions and "default permissions are applied on directories only")
+   setfacl -R -m u: username:rwx filename/dir
+    (-R indicates recursive permissions )
+
+What is acl mask ?
+A. acl mask definds the maximum granted permissions of the named users and groups and group owners and it does not restrict the permissions of the files and directories
+
+How will you remove all acl's to the file or directory ?
+A. setfacl -b filename
+
+How will you remove the default acls to the directory ?
+A. setfacl -k directory
+
+How will you set the acls of one file to the another file ?
+A. getfacl filename | setfacl --set-file=-filename
+
+How will you delete a specific acl to the file or a directory
+A. serfacl -x u:username:permissions filename
+
+How will you check the file system consistency 
+A. By using fsck command EX: fsck /path/to/lv
+
+What is filesystem journeling ?
+A. A special area in the filesystem is reserved to store the filesystem transactions is known as journeling.
+     incomplete transactions during sudden shutdown, journeling help here to complete transactions.
+
+How will you know the filesystem type while it is umounted ?
+A. file -sL /path/to/lv
+
+What is zombie process ?
+it is a process that has completed its execution but still have entry in the process table. 
+
+How will you list the compressed tar file
+A. tar -tvf file.tar
+
+How will you compress and tar the file in one command
+A. tar -zcvf file.tar
+
+what is Kernel Extension
+A. The kernel extension is a machanism as a means of dynamicly loading of pieces of code in the kernel without need of recompilation of the kernel. These pieces of code is generally known as plug-Ins or Kernel extensions.
+
+What is hard and soft mount ?
+A. ---------------------.
+
+Differential backup 
+A. The differential backup strategy first looks for the modification time of a file and compares it with the last full backup time.
+
+Incremental backup
+A. Incremental backups are similar to differential backups, incremental backup checks the difference between the modification time of a file and the last backup time.
+
+How will you print the boot time of the system ?
+A. who -b
+
+How will you know the last reboot information of the system ?
+A. last | grep reboot 
+
+difference between S and s, T and t in file permissions
+A. s : set UID or SGID if applyed to Group
+   t : Sticky bit with execution
+   S : Set UID without Execute Permission or SGID if applyed to Group
+   T : Sticky bit without Execute permission
+
+List Some of UNIX commands with suid enabled
+A. /usr/bin/passwd, /usr/bin/su, /usr/bin/sudo, /usr/bin/ping, /usr/bin/mount, /usr/bin/umount, chsh
+
+How will you list the Available unit types
+A. systemctl -t help
+
+How will you list the all the sockets in the system
+A. systemctl list-units --type=socket --all
+
+How will you list the all unit files in the system
+A.  systemctl list-unit-files --type=service
+
+how will you list all the services
+A. systemctl list-units --type service
+
+how will you trace the mounted file system information using systemctl command
+A. systemctl status --type mount
+
+how will you trace the swap file system using systemctl command
+A. systemctl status --type swap
+
+Issue instructions for a service to read and reload its configureation file without a complete stop and start. The rpocess ID will not change.
+A. systemctl reload sshd.service
+
+A disabled service will not be started automatically at boot or by other unit files ?
+A. #systemctl mask network
+
+Path to see the default targets
+A. /etc/systemd/system/default.target
+
+How will you print the default target that is currently set
+A. systemctl get-default
+
+How will you set the default target
+A. systemctl set-default targetname
+
+How will you list the failed services
+A. systemctl --failed --type=service
+
+fuser 
+A. The fuser command is used to find which process is using a file, a directory or a socket. It also gives information about the user owning the process and the type of access.
+
+fsck
+Linux fsck utility is used to check and repair Linux filesystems (ext2, ext3, ext4, etc.). the system runs the fsck during boot time to check whether the filesystem is in consistent state.
+
+what are the phases of fsck command:-
+A. Phases 1: Checking inodes, blocks, and sizes
+   Phases 2: Checking directory structure
+   Phases 3: Checking directory connectivity
+   Phases 4: Checking reference counts
+   Phases 5: Checking group summary information
+
+What are the phases of the xfs_repair command
+A. Phase 1 - find and verify superblock...
+   Phase 2 - using internal log
+   Phase 3 - for each AG...
+   Phase 4 - check for duplicate blocks...
+   Phase 5 - rebuild AG headers and trees...
+   Phase 6 - check inode connectivity...
+   Phase 7 - verify and correct link counts...
+
+What is the stanja for /etc/security/limits.conf file
+A. <domain>	<type>	  <item>	  	<value>
+
+What is the command to convert ext3 to ext4 filesystem
+A. tune2fs -O extents,uninit_bg,dir_index,64bit /path/to/lv
+
+
+What Is firewalld?
+A. Firewalld is the firewall daemon. It provides a dynamically managed firewall.
+   Uses support for network/firewall “zones” to assign a level of trust to a network and its associated connections, interfaces or sources.
+
+Configuration file for interfaces?
+A. /etc/sysconfig/network-scripts/ifcfg-'Ifname'
+
+How will you list the all serviceses
+A. ls l /usr/lib/firewalld/services
+                  or 
+       firewall-cmd --get-services
+
+What is a firewall
+A. A firewall is a way to protect machines from any unwanted traffic from outside or .
+
+Zones:
+A. Manages groups of rules.
+
+How will you list the pre-defind zones ? 
+A. firewall-cmd --get-zone
+
+How will you list default zones ?
+A. firewall-cmd --get-default-zone
+
+How will you list the output of the zones
+A. firewall-cmd --list-all-zones
+
+how will you Set the Default Zone.
+A. firewall-cmd --set-default-zone={zonename}
+
+what is the port number for the telnet ?
+A. 23/tcp
+
+What is Hypervisor, what are the different types of Hypervisors.
+A. Hypervisor is a program or software, it is used to virtualize the hardware 
+Type of hypervisor
+Hyper v-mircosoft,Esxi-vmware,kvm-linux,oracle vm
+
+How to recover root password without rebooting the server -- System Admin user exists 
+A. Log in to the server using the sysadmin user credentials.
+   after login to the server switch to root user by using sudo su command 
+   after getting root access issue the passwd command to change the root password.
+   After successfully changing the root password, i will check wether the root password is recovered or not by opening new terminal
+
+How will you know who and all nounted your nfs share ?
+A. ss -ntp | grep 2049
+            or
+   netstat | grep :nfs
+What is port forwarding
+A. redirecting a communication request from one port to another port which will acts as a original address to another port
+
+how will you check wether the inter net connectivity is there to your system or not
+A. traceroute [website name]
+              or
+             ping
+
+What is jumbo frame 
+jumbo frame is ethernet frame 
+
+HOw will you check wether  your system is virtual or physical
+A. cat /sys/class/dmi/id/product_name
+   lshw -c system | grep product
+   dmidcode -s system-product-name
+   dmidcode -t system
+   dmesg |grep DMI
+
+where will you find all the system units
+A. /usr/lib/systemd/system/units
+
+What is cache 
+A. temporary storage area used to store frequently accessed data for rapid access
+
+what is buffer
+A. buffer is a area of memory useed to temporaly stored data while it is being moved form one place to another place
+
+What is process affinity
+A. Incase of multiple CPUs and multiprogramming environment, the processor swich over multiple program in round robin fashion. The pre-empted job will be scheduled with previously allocated CPU for better performance. The is known as processor affinity.
+
+memoryleakage
+A. programs when their execution is completed but they are still in  ram and using the ram space, when we have to run a new process or application then it dont have enough free space it is know as memoryleakage
+
+Inactive memory
+A. it is a memory that is allocated for a process that is no longer running.
+
+shared memory
+A. it is a sapace in a memory that can be accessed by 2 or more programs
+
+active memory
+A.the memory which is being used by a particual processer
+
+what is the use of runner in teaming
+A. used to tell which algorithm is being used
+
+sar command fields
+A. 01:13:33 PM     CPU     %user     %nice   %system   %iowait    %steal     %idle
+
+iostat command fields
+A. Device             tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda               0.00         0.00         0.00          0          0
+
+vmstat command fields
+A. procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+   r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+
+top command fields
+A.  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+
+Difference between rhel6 and 7 and 8
+A. In RHEL 6 the default file system is ext4 where as in RHEL 7 & 8 default file system is xfs
+   In "" "" "" " parent process is init in RHEL 7&8 systemd
+   """ """ "" "" we can start services by using service command in RHEL 7 & 8
+   on rhel 8n on words packages and baseos are seperated in rpm 
+
+what is the configuration file for the firewall
+A. system configuration file /usr/lib/firewalld/*
+   custom configuration file /etc/firewalld/*
+
+what is psudo file system
+A. filesystems are created by the system and it also removed by the system when it is shutdown
+
+how will you update a package with rpm command
+A. rpm -U package name
+
+what is a package
+A. package is a smallest piece of software installedd in order to obtain certain functionality
+
+coredump 
+A. coredump is an evidence which is taken before the kernel crash
+
+what is raidcontroller
+A. 
+
+difference between swaping and paging
+A. swaping occurs when the whole process transfer for the disk
+   paging occuurs when the some process transfer for the disk
+
+lvmlabel
+A. placed in the second 512 bytes, lvm label as uuid of pv lvm label stores size of the block device in bytes,and it records the where metadata is stored on the device
+
+lvm metadata 
+A. contains information about vgs on your system it has 2 identical copies on each pv,the 1st copy is stored at the start of the device immediate to the label,second copy is stored at the end of the device.
+
+hypervisor
+A. is also known as virtual machine monitor.a hypervisor allows one host computer to support multiple guest vms by virtually sharing its resources such as memory and processing. a hypervisor allocates each vm resources such as cpu , memory storage and network to run the guest OS and application

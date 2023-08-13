@@ -1,0 +1,15 @@
+1.What is Git, and what are its main features?
+2.What is the difference between Git and SVN (Subversion)?
+3.What is a repository in Git?
+4.What is the difference between a Git clone and a Git fork?
+5.What is the purpose of branches in Git, and how do you create and merge them?
+6.What is the difference between Git pull and Git fetch?
+7.What are Git hooks, and how do they work?
+8.How do you revert a commit in Git?
+9.What is the purpose of Git rebase, and how does it differ from Git merge?
+10.How do you resolve merge conflicts in Git?
+11.What is Git stash, and when would you use it?
+12.What is the Git workflow (branching model) that you follow?
+13.How do you view the commit history in Git?
+14.How do you tag a specific commit in Git?
+15.How can you undo the last Git commit that has not been pushed?

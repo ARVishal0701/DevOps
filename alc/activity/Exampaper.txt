@@ -1,0 +1,16 @@
+1.Create a group named "stoogs".  A user "curly" and "larry" should belongs to "stoogs" group as a secondary group. A user "moe" should not have access to interactive shell and he should not be a member of "stoogs" group. passwd for all user created should be "jenny"
+2.Copy the /etc/fstab to /var/tmp and configure the its permissions as mention following. 
+The file /var/tmp/fstab is owned by the "root". The file /var/tmp/fstab belongs to the group "stoogs". The file /var/tmp/fstab should not be executable by others. Other users(future and current) should be able to read /var/tmp/fstab.
+3.Create a swap space of 1GB with priority -3. Make sure swap activates each time you reboot the server.
+4.Create RAID-10 filesytem of size 1G with mount piont "Secure_Web"
+5.Create ext4 filesystem of size 3G with mount point /sap/basis/srm. Mount with UUID
+6.[    
+7.Create xfs filesystem of size 1GB with mount point /sap/basis. Mount with UUID
+8.Create a mirrored filesystem /ha of size 3GB
+9.create a user sapadm and set umask as 002 as default umask for the user. Set the password as 'sapadm'and configure access in such a way, the user must prompt to change the password in the first login. Lock user 'moon' and change change its shell to /sbin/nologin. Create the user if it doesnt exists already.
+10.Create 6 Partitions each of 512MB. Create a VG called sapvg, create LVM filesystem namely /sap/feeders of type xfs with size128MB. Create 10 exmpty files with sap_fileX.txt where x is number 1 to 10.
+11.create an lv called sap_swap, and configure swap sapce over it. Make sure this swap of size 128M and must be activiated automatically along with server boot/reboot.
+12.Create raid0 filesytem with mount point /sap/logs of size 128M. The filesystem type is xfs. Create files rfileX.txt where X is numebr from 1 to 10 in that filesystem.
+13
+a)Create a thin lv with name tlv of size 1G in thinvg and mount it over /thinfs
+b)Set the user larry account to expire on Dec 31st 2020. Create the user if it doesnt exists

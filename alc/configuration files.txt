@@ -1,0 +1,43 @@
+FILES AND IT'S IMPORTANTS
+
+/usr             :- It contains installed software, shared libraries, includes files and read_only program data,
+                    important sub directories like : 1) ./usr/bin   - user commands
+                                                     2) ./usr/sbin  - systam adminstration commans                                                                               
+                                                     3) ./usr/local - locally customised software
+
+/etc             :- It contains systam "configuration files".
+
+/var             :- It contains systam "variable data".
+
+/run             :- Run time data for the process started since the last boot.
+
+/home            :- Home directories are used to store regular user's personal data and configuration files.
+
+/root            :- Home directories for the adminstrative super users.
+
+/tmp             :- A world_writable space for temporary files.
+
+/boot            :- Files needed to start the boot process.
+
+/dev             :- It contains special files that are used by the system to access hardware.
+
+/proc            :-
+
+/var/run/utmp    :- it contains login and logout information of the user.
+
+/var/run/wtmp    :- It contains current login users information.
+
+/etc/passwd      :- It contains users information.
+
+/etc/group       :- It contains users group information.
+
+/etc/shadow      :- It contains uers password and age information.
+
+/etc/gshadow     :- It contains group password information.
+
+/etc/default/useradd :- It contains default values of user while the user is created. 
+
+/etc/login.defs  :- It contains user login defaults settings.
+
+/etc/skell       :- It contains user profile and environment variable from where the useradd command copy to user while creating a user.
+                      

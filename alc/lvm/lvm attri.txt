@@ -1,0 +1,62 @@
+ATTRIBUTES :-
+------------
+
+#pvdisplay
+*pv name
+*vg name 
+*pv size
+*allocatable
+*PE size
+*Total PE
+*free PE
+*Allocated PE
+*pv UUID
+
+#vgdisplay
+*vg name
+*sys ID
+*format(version-lvm2)
+*Metadata areas
+*Metadata sequence no
+*vg access
+*vg status
+*Max LV
+*Cur LV          
+*Open LV         
+*Max PV          
+*Cur PV          
+*Act PV          
+*VG Size         
+*PE Size         
+*Total PE        
+*Alloc PE / Size 
+*Free  PE / Size 
+*VG UUID 
+
+
+#lvdisplay
+*LV Path               
+*LV Name               
+*VG Name               
+*LV UUID               
+*LV Write Access       
+*LV Creation host, time
+*LV Status             
+*# open                
+*LV Size               
+*Current LE            
+*Segments              
+*Allocation            
+*Read ahead sectors    
+*- currently set to    
+*Block device
+
+
+# vgscan
+*Found volume group "bvg1" using metadata type lvm2
+*Found volume group "bvg" using metadata type lvm2                  
+
+
+
+# lvscan
+  ACTIVE            '/dev/bvg/blv01' [512.00 MiB] inherit
